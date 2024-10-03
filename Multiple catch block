@@ -1,0 +1,14 @@
+public class MultipleCatchBlocks {
+    public static void main(String[] args) {
+        String str = null;
+
+        try {
+            System.out.println(str.length()); // This will cause NullPointerException
+            int result = 10 / 0; // This will cause ArithmeticException
+        } catch (NullPointerException e) {
+            System.out.println("Null pointer exception: " + e.getMessage());
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic exception: " + e.getMessage());
+        }
+    }
+}
