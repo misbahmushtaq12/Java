@@ -1,0 +1,27 @@
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    final void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class FinalKeywordExample {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound();  // Outputs: Dog barks
+
+        Cat cat = new Cat();
+        cat.sound();  // Outputs: Cat meows
+    }
+}
