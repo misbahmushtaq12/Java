@@ -1,0 +1,26 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MenuExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Swing Menu Example");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("File");
+        JMenuItem exitItem = new JMenuItem("Exit");
+
+        menu.add(exitItem);
+        menuBar.add(menu);
+        frame.setJMenuBar(menuBar);
+
+        exitItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        frame.setVisible(true);
+    }
+}
