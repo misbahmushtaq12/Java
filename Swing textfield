@@ -1,0 +1,31 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class TextFieldExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Swing TextField Example");
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+
+        JLabel label = new JLabel("Enter your name:");
+        label.setBounds(20, 30, 150, 30);
+        JTextField textField = new JTextField();
+        textField.setBounds(150, 30, 150, 30);
+        JButton button = new JButton("Submit");
+        button.setBounds(150, 70, 100, 30);
+
+        frame.add(label);
+        frame.add(textField);
+        frame.add(button);
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = textField.getText();
+                label.setText("Hello, " + name + "!");
+            }
+        });
+
+        frame.setVisible(true);
+    }
+}
