@@ -1,0 +1,59 @@
+class Message {
+    private String message;
+    
+    public synchronized void setMessage(String message) {
+        this.message = message;
+        notify();
+    }
+
+    public synchronized String getMessage() {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+}
+
+class Sender extends Thread {
+    private Message msg;
+    
+    Sender(Message msg) {
+        this.msg = msg;
+    }
+
+    public void run() {
+        String[] messages = {"Hello", "World", "Java"};
+        for (String m : messages) {
+            msg.setMessage(m);
+            System.out.println("Sent: " + m);
+        }
+    }
+}
+
+class Receiver extends Thread {
+    private Message msg;
+
+    Receiver(Message msg) {
+        this.msg = msg;
+    }
+
+    public void run() {
+        for (int i = 0; i < 3; i++) {
+            String m = msg.getMessage();
+            System.out.println("Received: " + m);
+        }
+    }
+}
+
+public class ThreadCommunicationExample {
+    public static void main(String[] args) {
+        Message msg = new Message();
+        Sender sender = new Sender(msg);
+        Receiver receiver = new Receiver(msg);
+        
+        receiver.start();
+        sender.start();
+    }
+}
