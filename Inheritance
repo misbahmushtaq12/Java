@@ -1,0 +1,21 @@
+class Vehicle {
+    void display() {
+        System.out.println("This is a vehicle.");
+    }
+}
+
+class Car extends Vehicle {
+    void display() {
+        System.out.println("This is a car.");
+    }
+}
+
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.display();  // Outputs: This is a vehicle.
+
+        Car car = new Car();
+        car.display();      // Outputs: This is a car.
+    }
+}
