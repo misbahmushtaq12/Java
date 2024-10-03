@@ -1,0 +1,37 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class ListExample {
+    public static void main(String[] args) {
+        Frame frame = new Frame("AWT List Example");
+        frame.setSize(400, 300);
+        frame.setLayout(new FlowLayout());
+
+        List list = new List();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+        list.add("Date");
+
+        Button button = new Button("Select");
+        Label label = new Label();
+
+        frame.add(list);
+        frame.add(button);
+        frame.add(label);
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText("Selected: " + list.getSelectedItem());
+            }
+        });
+
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+
+        frame.setVisible(true);
+    }
+}
