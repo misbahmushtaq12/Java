@@ -1,0 +1,34 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class CheckboxExample {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Swing Checkbox Example");
+        frame.setSize(400, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+
+        JCheckBox checkbox = new JCheckBox("Accept Terms and Conditions");
+        checkbox.setBounds(20, 30, 250, 30);
+        JButton button = new JButton("Submit");
+        button.setBounds(20, 70, 100, 30);
+        JLabel label = new JLabel();
+        label.setBounds(20, 110, 300, 30);
+
+        frame.add(checkbox);
+        frame.add(button);
+        frame.add(label);
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (checkbox.isSelected()) {
+                    label.setText("Terms accepted.");
+                } else {
+                    label.setText("Please accept the terms.");
+                }
+            }
+        });
+
+        frame.setVisible(true);
+    }
+}
