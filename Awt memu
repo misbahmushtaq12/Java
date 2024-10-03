@@ -1,0 +1,31 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class MenuExample {
+    public static void main(String[] args) {
+        Frame frame = new Frame("AWT Menu Example");
+        frame.setSize(400, 300);
+
+        MenuBar menuBar = new MenuBar();
+        Menu menu = new Menu("File");
+        MenuItem menuItem = new MenuItem("Exit");
+
+        menu.add(menuItem);
+        menuBar.add(menu);
+        frame.setMenuBar(menuBar);
+
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+
+        frame.setVisible(true);
+    }
+}
